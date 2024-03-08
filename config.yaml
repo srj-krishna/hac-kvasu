@@ -17,5 +17,5 @@ vectordb:
       environment: gcp-starter
       metadata_config:
         indexed:
-          - "url"
+          - "https://kvasudata-s4envah.svc.gcp-starter.pinecone.io"
           - "hash"
