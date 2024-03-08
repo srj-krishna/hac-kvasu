@@ -1,0 +1,21 @@
+llm:
+  provider: huggingface
+  config:
+    model: 'mistralai/Mistral-7B-Instruct-v0.2'
+    top_p: 0.5
+embedder:
+  provider: huggingface
+  config:
+    model: 'sentence-transformers/all-mpnet-base-v2'
+vectordb:
+  provider: pinecone
+  config:
+    metric: dotproduct
+    vector_dimension: 768
+    index_name: kvasudata
+    pod_config:
+      environment: gcp-starter
+      metadata_config:
+        indexed:
+          - "url"
+          - "hash"
