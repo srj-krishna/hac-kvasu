@@ -10,6 +10,7 @@ from azure.core.exceptions import HttpResponseError
 text_translator = TextTranslationClient(credential = TranslatorCredential("8a775052516145059fc3839081b55967", "southeastasia"));
 os.environ["HUGGINGFACE_ACCESS_TOKEN"] = "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"
 os.environ["PINECONE_API_KEY"] = "497910a9-4c3c-4223-9442-1349d1e0bd66"
+os.environ["PINECONE_ENV"] = "gcp-starter"
 
 
 def translate_string(from_lang, to_lang, string):
