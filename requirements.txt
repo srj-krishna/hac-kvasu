@@ -1,5 +1,9 @@
-altair
-numpy
-pandas
-pydeck
 streamlit
+embedchain[pinecone]==0.1.84
+pinecone-text 
+pinecone-client
+sentence-transformers
+chromadb
+pysqlite3-binary
+azure-ai-translation-text 
+azure-ai-textanalytics
