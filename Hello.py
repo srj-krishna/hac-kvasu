@@ -1,7 +1,15 @@
 import streamlit as st
-import os
-import embedchain
 from streamlit.logger import get_logger
+import os
+
+from pinecone import Pinecone
+from pinecone import PodSpec
+
+from langchain_community.embeddings import HuggingFaceEmbeddings
+from langchain.vectorstores import Pinecone
+from langchain_community.llms.huggingface_hub import HuggingFaceHub
+from langchain.chains import RetrievalQA
+
 import azure.ai.translation.text
 from azure.ai.translation.text import TextTranslationClient, TranslatorCredential
 from azure.ai.translation.text.models import InputTextItem
@@ -9,9 +17,24 @@ from azure.core.exceptions import HttpResponseError
 
 text_translator = TextTranslationClient(credential = TranslatorCredential("8a775052516145059fc3839081b55967", "southeastasia"));
 os.environ["HUGGINGFACE_ACCESS_TOKEN"] = "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"
-os.environ["PINECONE_API_KEY"] = "497910a9-4c3c-4223-9442-1349d1e0bd66"
-os.environ["PINECONE_ENV"] = "gcp-starter"
 
+pc = Pinecone(api_key="497910a9-4c3c-4223-9442-1349d1e0bd66")
+spec = PodSpec(environment="gcp-starter")
+index_name = 'kvasudata'
+index = pc.Index(index_name)
+
+embed = HuggingFaceEmbeddings(model_name='sentence-transformers/all-mpnet-base-v2')
+
+text_field = "text"
+vectorstore = Pinecone(
+    index, embed.embed_query, text_field
+)
+
+llm = HuggingFaceHub(
+            huggingfacehub_api_token="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",
+            repo_id="mistralai/Mistral-7B-Instruct-v0.2",
+            model_kwargs={"temperature":0.5,"max_length":2500}
+        )
 
 def translate_string(from_lang, to_lang, string):
     try:
