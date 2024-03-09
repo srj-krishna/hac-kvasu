@@ -40,7 +40,7 @@ st.set_page_config(
     page_icon="🌱",
     )
 
-version = embedchain.__version__
+
 st.title("💬 KVASU AI demo")
 st.caption("🚀 powered by AgroGraph from NeuBiom Labs!")
 system_message = "You are here to help with information and context-specific recommendations for Kerala for the following query. If you don't know something just say that you don't have the information."
@@ -48,8 +48,9 @@ lang = "English"
 final_prompt = ""
 
 @st.cache_resource
-def agrograph():
-    return embedchain.App.from_config("config.yaml")
+def ragchain():
+    
+    return 1
     
 if "messages" not in st.session_state:
     st.session_state.messages = [
@@ -70,7 +71,7 @@ with st.sidebar:
     ["English", "Malayalam(മലയാളം)"], index=0)
 
 if prompt := st.chat_input("Ask me anything!"):
-    app = agrograph()
+    app = ragchain()
  
     with st.chat_message("user"):
         st.markdown(prompt)
@@ -88,7 +89,7 @@ if prompt := st.chat_input("Ask me anything!"):
         full_response = ""
         final_response = ""
 
-        for response in app.query(system_message+final_prompt):
+        for response in ragchain(system_message+final_prompt):
             msg_placeholder.empty()
             full_response += response
             
