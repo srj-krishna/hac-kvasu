@@ -1,8 +1,12 @@
 streamlit
-embedchain[pinecone]==0.1.84
+pinecone
 pinecone-text 
 pinecone-client
+langchain
+langchain-community
+transformers
 sentence-transformers
+huggingface_hub
 chromadb
 pysqlite3-binary
 azure-ai-translation-text 
