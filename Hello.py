@@ -73,7 +73,7 @@ final_prompt = ""
 @st.cache_resource
 def ragchain():
     
-    return 1
+    return "test message"
     
 if "messages" not in st.session_state:
     st.session_state.messages = [
