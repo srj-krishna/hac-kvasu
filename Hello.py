@@ -10,6 +10,7 @@ from langchain.vectorstores import Pinecone
 from langchain_community.llms.huggingface_hub import HuggingFaceHub
 from langchain.chains import RetrievalQA
 
+
 import azure.ai.translation.text
 from azure.ai.translation.text import TextTranslationClient, TranslatorCredential
 from azure.ai.translation.text.models import InputTextItem
@@ -18,8 +19,8 @@ from azure.core.exceptions import HttpResponseError
 text_translator = TextTranslationClient(credential = TranslatorCredential("8a775052516145059fc3839081b55967", "southeastasia"));
 os.environ["HUGGINGFACE_ACCESS_TOKEN"] = "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"
 
-pc = Pinecone(api_key="497910a9-4c3c-4223-9442-1349d1e0bd66")
-spec = PodSpec(environment="gcp-starter")
+pc = Pinecone(api_key='497910a9-4c3c-4223-9442-1349d1e0bd66')
+spec = PodSpec(environment='gcp-starter')
 index_name = 'kvasudata'
 index = pc.Index(index_name)
 
