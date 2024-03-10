@@ -73,7 +73,7 @@ final_prompt = ""
 
 @st.cache_resource
 def ragchain(prompt):
-    response = prompt
+    response = index.describe_index_stats()
     return response
     
 if "messages" not in st.session_state:
@@ -119,7 +119,8 @@ if prompt := st.chat_input("Ask me anything!"):
             
             # Translate to Malayalam
         result_response = str(full_response)
-        result = get_final_answer(result_response)
+        #result = get_final_answer(result_response)
+        result = result_response
         if lang == "English":
             final_response = result
         else:
