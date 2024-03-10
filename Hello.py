@@ -19,7 +19,7 @@ st.set_page_config(
     page_icon="🌱",
     )
 
-st.title("💬 AgroBot")
+st.title("💬 KVASU Demo app")
 st.caption("🚀 powered by AgroGraph from NeuBiom Labs!")
 
 if "messages" not in st.session_state:
