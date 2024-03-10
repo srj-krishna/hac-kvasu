@@ -95,7 +95,7 @@ with st.sidebar:
     ["English", "Malayalam(മലയാളം)"], index=0)
 
 if prompt := st.chat_input("Ask me anything!"):
-    app = ragchain("hello")
+    intro = "hello"
  
     with st.chat_message("user"):
         st.markdown(prompt)
