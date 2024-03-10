@@ -73,7 +73,7 @@ final_prompt = ""
 
 @st.cache_resource
 def ragchain(prompt):
-    response = prompt
+    response = llm.invoke("what is the tiger population in wayanad for 2023")
     return response
     
 if "messages" not in st.session_state:
