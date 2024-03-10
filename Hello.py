@@ -7,14 +7,12 @@ from langchain.chains import RetrievalQA
 
 import streamlit as st
 
-@st.cache_resource
-
 api_key = '497910a9-4c3c-4223-9442-1349d1e0bd66'
 environment = 'gcp-starter'
 
 # configure client
-pc = pinecone.Pinecone(api_key=api_key)
-spec = pinecone.PodSpec(environment=environment)
+pc = pinecone.Pinecone(api_key='497910a9-4c3c-4223-9442-1349d1e0bd66')
+spec = pinecone.PodSpec(environment='gcp-starter')
 index_name = 'kvasudata'
 index = pc.Index(index_name)
 indexdetails = index.describe_index_stats()
