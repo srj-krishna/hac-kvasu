@@ -71,9 +71,9 @@ lang = "English"
 final_prompt = ""
 
 @st.cache_resource
-def ragchain():
-    
-    return "test message"
+def ragchain(prompt):
+    response = prompt
+    return response
     
 if "messages" not in st.session_state:
     st.session_state.messages = [
