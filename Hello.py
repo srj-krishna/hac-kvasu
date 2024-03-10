@@ -2,7 +2,6 @@ import streamlit as st
 from streamlit.logger import get_logger
 import os
 
-from pinecone import Pinecone
 from pinecone import PodSpec
 
 from langchain_community.embeddings import HuggingFaceEmbeddings
