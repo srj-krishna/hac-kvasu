@@ -5,8 +5,6 @@ from langchain_community.embeddings import HuggingFaceEmbeddings
 from langchain_community.llms.huggingface_hub import HuggingFaceHub
 from langchain.chains import RetrievalQA
 
-
-
 import streamlit as st
 
 @st.cache_resource
