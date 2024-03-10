@@ -3,6 +3,9 @@ from streamlit.logger import get_logger
 
 import pinecone
 
+from langchain_community.embeddings import HuggingFaceEmbeddings
+from langchain.vectorstores import Pinecone
+
 # initialize connection to pinecone (get API key at app.pc.io)
 api_key = '497910a9-4c3c-4223-9442-1349d1e0bd66'
 environment = 'gcp-starter'
@@ -14,6 +17,16 @@ index_name = 'kvasudata'
 
 index = pc.Index(index_name)
 indexdetails = index.describe_index_stats()
+
+embed = HuggingFaceEmbeddings(model_name='sentence-transformers/all-mpnet-base-v2')
+
+text_field = "text"
+vectorstore = Pinecone(
+    index, embed.embed_query, text_field
+)
+
+
+
 
 st.set_page_config(
     page_title=("KVASU demo"),
