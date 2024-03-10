@@ -22,6 +22,8 @@ st.set_page_config(
 st.title("💬 KVASU Demo app")
 st.caption("🚀 powered by AgroGraph from NeuBiom Labs!")
 
+@st.cache_resource
+
 if "messages" not in st.session_state:
     st.session_state.messages = [
         {
