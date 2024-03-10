@@ -1,8 +1,9 @@
 import streamlit as st
 from streamlit.logger import get_logger
+
 import os
 
-from pinecone import PodSpec
+import pinecone
 
 from langchain_community.embeddings import HuggingFaceEmbeddings
 from langchain.vectorstores import Pinecone
@@ -18,8 +19,8 @@ from azure.core.exceptions import HttpResponseError
 text_translator = TextTranslationClient(credential = TranslatorCredential("8a775052516145059fc3839081b55967", "southeastasia"));
 os.environ["HUGGINGFACE_ACCESS_TOKEN"] = "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"
 
-pc = Pinecone(api_key='497910a9-4c3c-4223-9442-1349d1e0bd66')
-spec = PodSpec(environment='gcp-starter')
+pc = pinecone.Pinecone(api_key='497910a9-4c3c-4223-9442-1349d1e0bd66')
+spec = pinecone.PodSpec(environment='gcp-starter')
 index_name = 'kvasudata'
 index = pc.Index(index_name)
 
