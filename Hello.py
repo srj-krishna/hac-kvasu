@@ -14,8 +14,6 @@ index_name = 'kvasudata'
 index = pc.Index(index_name)
 indexdetails = index.describe_index_stats()
 
-@st.cache_resource
-
 st.set_page_config(
     page_title=("KVASU demo"),
     page_icon="🌱",
