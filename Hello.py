@@ -97,8 +97,8 @@ st.set_page_config(
     page_icon="🌱",
     )
 
-st.title("💬 KVASU demo")
-st.caption("🚀 powered by AgroGraph from NeuBiom Labs!")
+st.title("💬 Knowledge Extraction Engine")
+st.caption("Built for KVASU-CWS by NeuBiom Labs!")
 system_message = "You are an Agrobot, here to help with information and context-specific recommendations for farming in Kerala for the following query. If you don't know something just say that you don't have the information."
 lang = "English"
 final_prompt = ""
@@ -109,7 +109,7 @@ if "messages" not in st.session_state:
         {
             "role": "assistant",
             "content": """
-        Hi! I'm AgroBot, your personal agricultural assistant. I'm here to help you with information and context-specific recommendations for farming in Kerala. I can guide you through every step of the farming process. How can I help you today? """,
+        Hi! I'm here to help you with information and context-specific recommendations on Forest and Wildlife related knowledge based on Kerala and the nearby regions.  How can I help you today? """,
         }
     ]
 
