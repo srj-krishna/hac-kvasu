@@ -78,8 +78,19 @@ def get_final_answer(text):
 def queryllm(text):
     user_question = text
     docs = vectorstore.similarity_search(user_question)
+    sourcelist = extract_sources(docs)
     response = chain({"input_documents": docs, "question": user_question}, return_only_outputs=False)
     return response["output_text"]
+
+def extract_sources(docs):
+    unique_sources = set()
+    for doc in docs:
+        source_name = doc.metadata.get('source')
+        if source_name:
+            # Remove the specified part from the source name
+            source_name = source_name.replace('/content/pdfs/', '')
+            unique_sources.add(source_name)
+    return ', '.join(unique_sources)
 
 st.set_page_config(
     page_title=("KVASU demo"),
@@ -113,7 +124,7 @@ with st.sidebar:
 
 if prompt := st.chat_input("Ask me anything!"):
     status = 1
- 
+  
     with st.chat_message("user"):
         st.markdown(prompt)
         st.session_state.messages.append({"role": "user", "content": prompt})
@@ -129,6 +140,7 @@ if prompt := st.chat_input("Ask me anything!"):
         msg_placeholder.markdown("Thinking...")
         full_response = ""
         final_response = ""
+        sourcelist = ""
 
         msg_placeholder.empty()
         full_response = queryllm(final_prompt)
@@ -142,5 +154,5 @@ if prompt := st.chat_input("Ask me anything!"):
             tr_response = translate_string('en','ml', result )   
             final_response = tr_response
         
-        msg_placeholder.markdown(final_response)
-        st.session_state.messages.append({"role": "assistant", "content": final_response})
+        msg_placeholder.markdown(final_response+ "Sources :" + sourcelist)
+        st.session_state.messages.append({"role": "assistant", "content": final_response + "Sources :" + sourcelist})
