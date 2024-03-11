@@ -93,7 +93,7 @@ def extract_sources(docs):
     return ', '.join(unique_sources)
 
 st.set_page_config(
-    page_title=("KVASU demo"),
+    page_title=("Knowledge Extraction Engine"),
     page_icon="🌱",
     )
 
