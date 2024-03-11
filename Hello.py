@@ -80,7 +80,7 @@ def queryllm(text):
     docs = vectorstore.similarity_search(user_question)
     sourcelist = extract_sources(docs)
     response = chain({"input_documents": docs, "question": user_question}, return_only_outputs=False)
-    return response["output_text"]
+    return response["output_text"], sourcelist
 
 def extract_sources(docs):
     unique_sources = set()
@@ -143,7 +143,7 @@ if prompt := st.chat_input("Ask me anything!"):
         sourcelist = ""
 
         msg_placeholder.empty()
-        full_response = queryllm(final_prompt)
+        full_response, sourcelist = queryllm(final_prompt)
             
             # Translate to Malayalam
         result_response = str(full_response)
