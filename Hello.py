@@ -34,7 +34,7 @@ result = vectorstore.similarity_search(
 llm = HuggingFaceHub(
             huggingfacehub_api_token="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",
             repo_id="mistralai/Mistral-7B-Instruct-v0.2",
-            model_kwargs={"temperature":0.1,"max_length":512}
+            model_kwargs={"temperature":0.1,"max_length":2048}
         )
 
 def retrieval_answer(query):
