@@ -77,7 +77,7 @@ def get_final_answer(text):
 
 def queryllm(text):
     user_question = text
-    docs = vectorstore.similarity_search(user_question)
+    docs = vectorstore.similarity_search(user_question, k=3)
     sourcelist = extract_sources(docs)
     response = chain({"input_documents": docs, "question": user_question}, return_only_outputs=False)
     return response["output_text"], sourcelist
